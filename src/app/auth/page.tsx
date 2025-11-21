@@ -2,15 +2,18 @@
 
 import { Button } from "@/src/components/ui/button";
 import { useSignIn } from "@clerk/nextjs";
+import { useSearchParams } from "next/navigation";
 
 export default function AuthPage() {
   const { signIn } = useSignIn();
+  const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get("redirect_url");
 
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
       redirectUrl: "/auth/sso-callback",
-      redirectUrlComplete: "/",
+      redirectUrlComplete: redirectUrl || "/",
     });
   };
 
