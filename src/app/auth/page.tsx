@@ -15,7 +15,8 @@ export default function AuthPage() {
   const handleSignIn = async () => {
     await signIn?.create({
       strategy: "oauth_google",
-      redirectUrl: "/auth/sso-callback?redirect_url=" + encodeURIComponent(redirectUrl || "/"),
+      redirectUrl: "/auth/sso-callback",
+      actionCompleteRedirectUrl: redirectUrl || "/",
     });
   };
 
