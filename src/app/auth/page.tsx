@@ -8,11 +8,12 @@ export default function AuthPage() {
   const { signIn } = useSignIn();
   const { isLoaded } = useUser();
   const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get("redirect_url");
 
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
-      redirectUrl: "/auth/sso-callback",
+      redirectUrl: redirectUrl || "/",
       redirectUrlComplete: "/",
     });
   };
