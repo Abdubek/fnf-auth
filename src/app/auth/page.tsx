@@ -14,20 +14,11 @@ export default function AuthPage() {
   console.log(redirectUrl);
 
   const handleSignIn = async () => {
-    try {
-      const result = await signIn?.create({
-        strategy: "oauth_google",
-        redirectUrl: "/auth/sso-callback",
-        actionCompleteRedirectUrl: redirectUrl || "/",
-      });
-
-      if (result?.status === "complete") {
-        await setActive?.({ session: result.createdSessionId });
-        router.push("/dashboard");
-      }
-    } catch (err) {
-      console.error("Error:", err);
-    }
+    signIn?.authenticateWithRedirect({
+      strategy: "oauth_google",
+      redirectUrl: "/auth/sso-callback",
+      redirectUrlComplete: redirectUrl || "/",
+    });
   };
 
   if (!signIn || !isLoaded) return null;
