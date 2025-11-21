@@ -2,21 +2,13 @@
 
 import { Button } from "@/src/components/ui/button";
 import { useSignIn, useUser } from "@clerk/nextjs";
-import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function AuthPage() {
   const { signIn } = useSignIn();
-  const { isSignedIn, isLoaded } = useUser();
+  const { isLoaded } = useUser();
   const searchParams = useSearchParams();
-  const router = useRouter();
   const redirectUrl = searchParams.get("redirect_url");
-
-  useEffect(() => {
-    if (isLoaded && isSignedIn && redirectUrl) {
-      router.push(redirectUrl);
-    }
-  }, [isLoaded, isSignedIn, redirectUrl, router]);
 
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
