@@ -10,6 +10,8 @@ export default function AuthPage() {
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get("redirect_url");
 
+  console.log(redirectUrl);
+
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
