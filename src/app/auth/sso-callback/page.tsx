@@ -1,6 +1,7 @@
 import { LoaderIcon } from "lucide-react";
 import { Suspense } from "react";
 import { RedirectCallback } from "./redirect-callback";
+import { AuthenticateWithRedirectCallback } from "@clerk/nextjs";
 
 export default function SSORedirectPage() {
   return (
@@ -12,9 +13,10 @@ export default function SSORedirectPage() {
         </h1>
       </div>
 
-      <Suspense fallback={null}>
+      <AuthenticateWithRedirectCallback />
+      {/* <Suspense fallback={null}>
         <RedirectCallback />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }
