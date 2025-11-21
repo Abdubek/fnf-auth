@@ -13,10 +13,9 @@ export default function AuthPage() {
   console.log(redirectUrl);
 
   const handleSignIn = async () => {
-    await signIn?.authenticateWithRedirect({
+    await signIn?.create({
       strategy: "oauth_google",
       redirectUrl: redirectUrl || "/",
-      redirectUrlComplete: redirectUrl || "/",
     });
   };
 
