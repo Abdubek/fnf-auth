@@ -12,7 +12,7 @@ export default function AuthPage() {
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
-      redirectUrl: redirectUrl || "/auth/sso-callback",
+      redirectUrl: "/auth/sso-callback",
       redirectUrlComplete: redirectUrl || "/",
     });
   };
