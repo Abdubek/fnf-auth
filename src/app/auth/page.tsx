@@ -13,8 +13,8 @@ export default function AuthPage() {
   const handleSignIn = async () => {
     await signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
-      redirectUrl: "/asd/redirectUrl",
-      redirectUrlComplete: "/qwe/redirectUrlComplete",
+      redirectUrl: redirectUrl || "/",
+      redirectUrlComplete: redirectUrl || "/",
     });
   };
 
