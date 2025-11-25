@@ -12,6 +12,9 @@ export default function AuthPage() {
   const redirectURL = redirectParam ? new URL(redirectParam) : null;
   const finalRedirect = redirectURL ? redirectURL.searchParams.get("redirect_uri") : null;
 
+  console.log("redirectURL:", redirectURL);
+  console.log("finalRedirect:", finalRedirect);
+
   const handleSignIn = async () => {
     signIn?.authenticateWithRedirect({
       strategy: "oauth_google",
